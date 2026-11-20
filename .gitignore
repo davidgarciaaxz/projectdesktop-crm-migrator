@@ -1,0 +1,45 @@
+# --- Visual Studio / IDE ---
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+
+# --- Build output ---
+bin/
+obj/
+publish/
+TestResults/
+*.log
+
+# --- Secretos y configuracion local ---
+appsettings.json
+appsettings.*.local.json
+*.pfx
+*.pem
+*.key
+.env
+
+# --- Estado de importacion generado en ejecuciones ---
+import-state*.json
+
+# --- Datos de cliente (planes de proyecto .mpp) ---
+*.mpp
+
+# --- Artefactos generados por herramientas ---
+*.artifactvalidatepass
+
+# --- SO ---
+Thumbs.db
+.DS_Store
+
+# --- Datos de entrada/salida de proyectos reales (no versionar, solo programas) ---
+*.xlsx
+*.xls
+*.csv
+analysis*.json
+*.analysis.json
+import-plan*.json
+resources.json
+resources.template.json

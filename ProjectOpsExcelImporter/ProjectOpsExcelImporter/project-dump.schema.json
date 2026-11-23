@@ -1,0 +1,2576 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/project-dump.schema.json",
+  "title": "Project Dump JSON Schema",
+  "description": "Schema inferred from the 13 supplied project-dump JSON files.",
+  "type": "object",
+  "properties": {
+    "SourceFile": {
+      "type": "string"
+    },
+    "GeneratedAtUtc": {
+      "type": "string"
+    },
+    "MpxjNetVersion": {
+      "type": "string"
+    },
+    "ReaderUsed": {
+      "type": "string"
+    },
+    "Project": {
+      "type": "object",
+      "properties": {
+        "Properties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string"
+              },
+              "MpxjProperty": {
+                "type": "string"
+              },
+              "Value": {
+                "type": [
+                  "null",
+                  "string",
+                  "boolean",
+                  "object",
+                  "number"
+                ]
+              },
+              "FormattedValue": {
+                "type": "string"
+              },
+              "Unit": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "Name",
+              "MpxjProperty",
+              "Value",
+              "FormattedValue",
+              "Unit"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "CustomProperties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string"
+              },
+              "MpxjProperty": {
+                "type": "string"
+              },
+              "Value": {
+                "type": "string"
+              },
+              "FormattedValue": {
+                "type": "string"
+              },
+              "Unit": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "Name",
+              "MpxjProperty",
+              "Value",
+              "FormattedValue",
+              "Unit"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "OtherPopulatedProjectFields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string"
+              },
+              "MpxjProperty": {
+                "type": "string"
+              },
+              "Value": {
+                "type": [
+                  "string",
+                  "boolean"
+                ]
+              },
+              "FormattedValue": {
+                "type": "string"
+              },
+              "Unit": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Name",
+              "MpxjProperty",
+              "Value",
+              "FormattedValue",
+              "Unit"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "Currencies": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "Properties",
+        "CustomProperties",
+        "OtherPopulatedProjectFields",
+        "Currencies"
+      ],
+      "additionalProperties": false
+    },
+    "Tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer"
+          },
+          "UniqueId": {
+            "type": "integer"
+          },
+          "Guid": {
+            "type": "string"
+          },
+          "Name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Wbs": {
+            "type": "string"
+          },
+          "OutlineNumber": {
+            "type": "string"
+          },
+          "OutlineLevel": {
+            "type": "integer"
+          },
+          "ParentId": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "ParentUniqueId": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "ParentName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ChildIds": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "ChildUniqueIds": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "IsProjectSummaryTask": {
+            "type": "boolean"
+          },
+          "IsSummary": {
+            "type": "boolean"
+          },
+          "IsMilestone": {
+            "type": "boolean"
+          },
+          "IsCritical": {
+            "type": "boolean"
+          },
+          "IsActive": {
+            "type": "boolean"
+          },
+          "IsInactive": {
+            "type": "boolean"
+          },
+          "IsManuallyScheduled": {
+            "type": "boolean"
+          },
+          "TaskMode": {
+            "type": "string"
+          },
+          "IsNull": {
+            "type": "boolean"
+          },
+          "IsExternalTask": {
+            "type": "boolean"
+          },
+          "Priority": {
+            "type": "integer"
+          },
+          "PercentComplete": {
+            "type": "integer"
+          },
+          "PercentWorkComplete": {
+            "type": "integer"
+          },
+          "PhysicalPercentComplete": {
+            "type": "integer"
+          },
+          "Start": {
+            "type": "string"
+          },
+          "Finish": {
+            "type": "string"
+          },
+          "ActualStart": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ActualFinish": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Duration": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "DurationIsEstimated": {
+            "type": "boolean"
+          },
+          "Work": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "ActualWork": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "RemainingWork": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "Cost": {
+            "type": "number"
+          },
+          "ActualCost": {
+            "type": "number"
+          },
+          "RemainingCost": {
+            "type": "number"
+          },
+          "FixedCost": {
+            "type": "number"
+          },
+          "FixedCostAccrual": {
+            "type": "string"
+          },
+          "CostVariance": {
+            "type": "number"
+          },
+          "ConstraintType": {
+            "type": "string"
+          },
+          "ConstraintDate": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Deadline": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "TaskType": {
+            "type": "string"
+          },
+          "EffortDriven": {
+            "type": "boolean"
+          },
+          "CalendarUniqueId": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "CalendarName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "EffectiveCalendarName": {
+            "type": "string"
+          },
+          "ResourceNames": {
+            "type": "null"
+          },
+          "AssignedResourceNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "PredecessorsText": {
+            "type": "string"
+          },
+          "SuccessorsText": {
+            "type": "string"
+          },
+          "Notes": {
+            "type": "string"
+          },
+          "Hyperlink": {
+            "type": "null"
+          },
+          "HyperlinkAddress": {
+            "type": "null"
+          },
+          "HyperlinkSubAddress": {
+            "type": "null"
+          },
+          "HyperlinkScreenTip": {
+            "type": "null"
+          },
+          "Baselines": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Index": {
+                  "type": "integer"
+                },
+                "Label": {
+                  "type": "string"
+                },
+                "Cost": {
+                  "type": "number"
+                },
+                "Start": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "Finish": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "Work": {
+                  "type": "object",
+                  "properties": {
+                    "Value": {
+                      "type": "number"
+                    },
+                    "Units": {
+                      "type": "string"
+                    },
+                    "Text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Value",
+                    "Units",
+                    "Text"
+                  ],
+                  "additionalProperties": false
+                },
+                "Duration": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "Value": {
+                      "type": "number"
+                    },
+                    "Units": {
+                      "type": "string"
+                    },
+                    "Text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Value",
+                    "Units",
+                    "Text"
+                  ],
+                  "additionalProperties": false
+                },
+                "FixedCost": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "Index",
+                "Label",
+                "Cost",
+                "Start",
+                "Finish",
+                "Work",
+                "Duration",
+                "FixedCost"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "VisibleColumnValues": {
+            "type": "object",
+            "properties": {
+              "% completado": {
+                "type": "string"
+              },
+              "Comienzo": {
+                "type": "string"
+              },
+              "Fin": {
+                "type": "string"
+              },
+              "Duración": {
+                "type": "string"
+              },
+              "Trabajo": {
+                "type": "string"
+              },
+              "Predecesoras": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "Sucesoras": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "Costo de línea base6": {
+                "type": "string"
+              },
+              "Costo": {
+                "type": "string"
+              },
+              "Costo real": {
+                "type": "string"
+              },
+              "Variación de costo": {
+                "type": "string"
+              },
+              "Costo restante": {
+                "type": "string"
+              },
+              "Nombres de los recursos": {
+                "type": "null"
+              },
+              "SÁBANA": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "VARIACIÓN SÁBANA": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "FACTURACIÓN": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "COBROS": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "% completado",
+              "Comienzo",
+              "Fin",
+              "Duración",
+              "Trabajo",
+              "Predecesoras",
+              "Sucesoras",
+              "Costo de línea base6",
+              "Costo",
+              "Costo real",
+              "Variación de costo",
+              "Costo restante",
+              "Nombres de los recursos",
+              "SÁBANA",
+              "VARIACIÓN SÁBANA",
+              "FACTURACIÓN",
+              "COBROS"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "Id",
+          "UniqueId",
+          "Guid",
+          "Name",
+          "Wbs",
+          "OutlineNumber",
+          "OutlineLevel",
+          "ParentId",
+          "ParentUniqueId",
+          "ParentName",
+          "ChildIds",
+          "ChildUniqueIds",
+          "IsProjectSummaryTask",
+          "IsSummary",
+          "IsMilestone",
+          "IsCritical",
+          "IsActive",
+          "IsInactive",
+          "IsManuallyScheduled",
+          "TaskMode",
+          "IsNull",
+          "IsExternalTask",
+          "Priority",
+          "PercentComplete",
+          "PercentWorkComplete",
+          "PhysicalPercentComplete",
+          "Start",
+          "Finish",
+          "ActualStart",
+          "ActualFinish",
+          "Duration",
+          "DurationIsEstimated",
+          "Work",
+          "ActualWork",
+          "RemainingWork",
+          "Cost",
+          "ActualCost",
+          "RemainingCost",
+          "FixedCost",
+          "FixedCostAccrual",
+          "CostVariance",
+          "ConstraintType",
+          "ConstraintDate",
+          "Deadline",
+          "TaskType",
+          "EffortDriven",
+          "CalendarUniqueId",
+          "CalendarName",
+          "EffectiveCalendarName",
+          "ResourceNames",
+          "AssignedResourceNames",
+          "PredecessorsText",
+          "SuccessorsText",
+          "Notes",
+          "Hyperlink",
+          "HyperlinkAddress",
+          "HyperlinkSubAddress",
+          "HyperlinkScreenTip",
+          "Baselines",
+          "VisibleColumnValues"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "VisibleColumns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "DisplayName": {
+            "type": "string"
+          },
+          "IsCustomColumn": {
+            "type": "boolean"
+          },
+          "MpxjProperty": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "FieldType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "UnderlyingField": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "DataType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Entity": {
+            "type": "string"
+          },
+          "AliasSource": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Formula": {
+            "type": "null"
+          },
+          "LookupTable": {
+            "type": "null"
+          },
+          "Resolved": {
+            "type": "boolean"
+          },
+          "TasksWithValue": {
+            "type": "integer"
+          },
+          "TasksWithNonZeroValue": {
+            "type": "integer"
+          },
+          "ProjectSummaryTaskValue": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ProjectSummaryTaskHasNonZeroValue": {
+            "type": "boolean"
+          },
+          "FoundInViewTables": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Observation": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "DisplayName",
+          "IsCustomColumn",
+          "MpxjProperty",
+          "FieldType",
+          "UnderlyingField",
+          "DataType",
+          "Unit",
+          "Entity",
+          "AliasSource",
+          "Formula",
+          "LookupTable",
+          "Resolved",
+          "TasksWithValue",
+          "TasksWithNonZeroValue",
+          "ProjectSummaryTaskValue",
+          "ProjectSummaryTaskHasNonZeroValue",
+          "FoundInViewTables",
+          "Observation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "ViewTables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "IsResourceTable": {
+            "type": "boolean"
+          },
+          "Columns": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Title": {
+                  "type": "string"
+                },
+                "FieldType": {
+                  "type": "string"
+                },
+                "FieldName": {
+                  "type": "string"
+                },
+                "DataType": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Title",
+                "FieldType",
+                "FieldName",
+                "DataType"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "Id",
+          "Name",
+          "IsResourceTable",
+          "Columns"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "Dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "RelationUniqueId": {
+            "type": "integer"
+          },
+          "PredecessorId": {
+            "type": "integer"
+          },
+          "PredecessorUniqueId": {
+            "type": "integer"
+          },
+          "PredecessorName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "SuccessorId": {
+            "type": "integer"
+          },
+          "SuccessorUniqueId": {
+            "type": "integer"
+          },
+          "SuccessorName": {
+            "type": "string"
+          },
+          "RelationType": {
+            "type": "string"
+          },
+          "RelationTypeName": {
+            "type": "string"
+          },
+          "Abbreviation": {
+            "type": "string"
+          },
+          "LagValue": {
+            "type": "number"
+          },
+          "LagUnits": {
+            "type": "string"
+          },
+          "LagText": {
+            "type": "string"
+          },
+          "Driving": {
+            "type": "boolean"
+          },
+          "MsProjectPredecessorNotation": {
+            "type": "string"
+          },
+          "Source": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "RelationUniqueId",
+          "PredecessorId",
+          "PredecessorUniqueId",
+          "PredecessorName",
+          "SuccessorId",
+          "SuccessorUniqueId",
+          "SuccessorName",
+          "RelationType",
+          "RelationTypeName",
+          "Abbreviation",
+          "LagValue",
+          "LagUnits",
+          "LagText",
+          "Driving",
+          "MsProjectPredecessorNotation",
+          "Source"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "Resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer"
+          },
+          "UniqueId": {
+            "type": "integer"
+          },
+          "Guid": {
+            "type": "string"
+          },
+          "Name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Initials": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Code": {
+            "type": "null"
+          },
+          "Group": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "EmailAddress": {
+            "type": "null"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "MaterialLabel": {
+            "type": "null"
+          },
+          "IsNull": {
+            "type": "boolean"
+          },
+          "IsGeneric": {
+            "type": "boolean"
+          },
+          "IsActive": {
+            "type": "boolean"
+          },
+          "IsEnterprise": {
+            "type": "boolean"
+          },
+          "CalendarUniqueId": {
+            "type": "integer"
+          },
+          "CalendarName": {
+            "type": "string"
+          },
+          "BaseCalendar": {
+            "type": "null"
+          },
+          "MaxUnits": {
+            "type": "number"
+          },
+          "AvailableFrom": {
+            "type": "null"
+          },
+          "AvailableTo": {
+            "type": "null"
+          },
+          "Availability": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Start": {
+                  "type": "null"
+                },
+                "End": {
+                  "type": "null"
+                },
+                "Units": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "Start",
+                "End",
+                "Units"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "Work": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "ActualWork": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "RemainingWork": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "Cost": {
+            "type": "number"
+          },
+          "ActualCost": {
+            "type": "number"
+          },
+          "RemainingCost": {
+            "type": "number"
+          },
+          "StandardRate": {
+            "type": "object",
+            "properties": {
+              "Amount": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Amount",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "OvertimeRate": {
+            "type": "object",
+            "properties": {
+              "Amount": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Amount",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "CostPerUse": {
+            "type": "integer"
+          },
+          "AccrueAt": {
+            "type": "string"
+          },
+          "Notes": {
+            "type": "string"
+          },
+          "AssignmentCount": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "Id",
+          "UniqueId",
+          "Guid",
+          "Name",
+          "Initials",
+          "Code",
+          "Group",
+          "EmailAddress",
+          "Type",
+          "MaterialLabel",
+          "IsNull",
+          "IsGeneric",
+          "IsActive",
+          "IsEnterprise",
+          "CalendarUniqueId",
+          "CalendarName",
+          "BaseCalendar",
+          "MaxUnits",
+          "AvailableFrom",
+          "AvailableTo",
+          "Availability",
+          "Work",
+          "ActualWork",
+          "RemainingWork",
+          "Cost",
+          "ActualCost",
+          "RemainingCost",
+          "StandardRate",
+          "OvertimeRate",
+          "CostPerUse",
+          "AccrueAt",
+          "Notes",
+          "AssignmentCount"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "ResourceRateTables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ResourceId": {
+            "type": "integer"
+          },
+          "ResourceUniqueId": {
+            "type": "integer"
+          },
+          "ResourceName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "RateTable": {
+            "type": "string"
+          },
+          "RateTableIndex": {
+            "type": "integer"
+          },
+          "TableIsPopulated": {
+            "type": "boolean"
+          },
+          "EntryIndex": {
+            "type": "integer"
+          },
+          "EffectiveFrom": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "EffectiveTo": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "EffectiveFromIsOpen": {
+            "type": "boolean"
+          },
+          "EffectiveToIsOpen": {
+            "type": "boolean"
+          },
+          "StandardRate": {
+            "type": "object",
+            "properties": {
+              "Amount": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Amount",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "OvertimeRate": {
+            "type": "object",
+            "properties": {
+              "Amount": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Amount",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "CostPerUse": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "ResourceId",
+          "ResourceUniqueId",
+          "ResourceName",
+          "RateTable",
+          "RateTableIndex",
+          "TableIsPopulated",
+          "EntryIndex",
+          "EffectiveFrom",
+          "EffectiveTo",
+          "EffectiveFromIsOpen",
+          "EffectiveToIsOpen",
+          "StandardRate",
+          "OvertimeRate",
+          "CostPerUse"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "ResourceAssignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "UniqueId": {
+            "type": "integer"
+          },
+          "Guid": {
+            "type": "string"
+          },
+          "TaskId": {
+            "type": "integer"
+          },
+          "TaskUniqueId": {
+            "type": "integer"
+          },
+          "TaskName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "TaskMissing": {
+            "type": "boolean"
+          },
+          "ResourceId": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "ResourceUniqueId": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "ResourceName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ResourceGuid": {
+            "type": "string"
+          },
+          "ResourceType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ResourceMissing": {
+            "type": "boolean"
+          },
+          "Start": {
+            "type": "string"
+          },
+          "Finish": {
+            "type": "string"
+          },
+          "ActualStart": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ActualFinish": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Units": {
+            "type": "number"
+          },
+          "RemainingUnits": {
+            "type": "number"
+          },
+          "Work": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "ActualWork": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "RemainingWork": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "number"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "OvertimeWork": {
+            "type": "object",
+            "properties": {
+              "Value": {
+                "type": "integer"
+              },
+              "Units": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Value",
+              "Units",
+              "Text"
+            ],
+            "additionalProperties": false
+          },
+          "Cost": {
+            "type": "number"
+          },
+          "ActualCost": {
+            "type": "number"
+          },
+          "RemainingCost": {
+            "type": "number"
+          },
+          "OvertimeCost": {
+            "type": "integer"
+          },
+          "BaselineCost": {
+            "type": "number"
+          },
+          "Baseline6Cost": {
+            "type": "number"
+          },
+          "CostRateTableIndex": {
+            "type": "integer"
+          },
+          "CostRateTable": {
+            "type": "string"
+          },
+          "RateSource": {
+            "type": "string"
+          },
+          "OverrideRate": {
+            "type": "null"
+          },
+          "PercentWorkComplete": {
+            "type": [
+              "null",
+              "number"
+            ]
+          },
+          "EffectiveCalendarName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "WorkContour": {
+            "type": "string"
+          },
+          "CostValidation": {
+            "type": [
+              "null",
+              "object"
+            ],
+            "properties": {
+              "CostReadFromMpp": {
+                "type": "number"
+              },
+              "CalculatedCostForValidation": {
+                "type": "number"
+              },
+              "Difference": {
+                "type": "number"
+              },
+              "RateLookupDate": {
+                "type": "string"
+              },
+              "StandardRateUsed": {
+                "type": "object",
+                "properties": {
+                  "Amount": {
+                    "type": "number"
+                  },
+                  "Units": {
+                    "type": "string"
+                  },
+                  "Text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Amount",
+                  "Units",
+                  "Text"
+                ],
+                "additionalProperties": false
+              },
+              "OvertimeRateUsed": {
+                "type": "object",
+                "properties": {
+                  "Amount": {
+                    "type": "number"
+                  },
+                  "Units": {
+                    "type": "string"
+                  },
+                  "Text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Amount",
+                  "Units",
+                  "Text"
+                ],
+                "additionalProperties": false
+              },
+              "CostPerUseUsed": {
+                "type": "integer"
+              },
+              "RegularQuantity": {
+                "type": "number"
+              },
+              "OvertimeQuantity": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "Formula": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "CostReadFromMpp",
+              "CalculatedCostForValidation",
+              "Difference",
+              "RateLookupDate",
+              "StandardRateUsed",
+              "OvertimeRateUsed",
+              "CostPerUseUsed",
+              "RegularQuantity",
+              "OvertimeQuantity",
+              "Formula",
+              "Note"
+            ],
+            "additionalProperties": false
+          },
+          "Timephased": {
+            "type": "object",
+            "properties": {
+              "Error": {
+                "type": "null"
+              },
+              "PlannedWork": {
+                "type": "array",
+                "items": {}
+              },
+              "ActualRegularWork": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Start": {
+                      "type": "string"
+                    },
+                    "Finish": {
+                      "type": "string"
+                    },
+                    "TotalAmount": {
+                      "type": "string"
+                    },
+                    "AmountPerHour": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Start",
+                    "Finish",
+                    "TotalAmount",
+                    "AmountPerHour"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "RemainingRegularWork": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Start": {
+                      "type": "string"
+                    },
+                    "Finish": {
+                      "type": "string"
+                    },
+                    "TotalAmount": {
+                      "type": "string"
+                    },
+                    "AmountPerHour": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Start",
+                    "Finish",
+                    "TotalAmount",
+                    "AmountPerHour"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "ActualCost": {
+                "type": "array",
+                "items": {}
+              }
+            },
+            "required": [
+              "Error",
+              "PlannedWork",
+              "ActualRegularWork",
+              "RemainingRegularWork",
+              "ActualCost"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "UniqueId",
+          "Guid",
+          "TaskId",
+          "TaskUniqueId",
+          "TaskName",
+          "TaskMissing",
+          "ResourceId",
+          "ResourceUniqueId",
+          "ResourceName",
+          "ResourceGuid",
+          "ResourceType",
+          "ResourceMissing",
+          "Start",
+          "Finish",
+          "ActualStart",
+          "ActualFinish",
+          "Units",
+          "RemainingUnits",
+          "Work",
+          "ActualWork",
+          "RemainingWork",
+          "OvertimeWork",
+          "Cost",
+          "ActualCost",
+          "RemainingCost",
+          "OvertimeCost",
+          "BaselineCost",
+          "Baseline6Cost",
+          "CostRateTableIndex",
+          "CostRateTable",
+          "RateSource",
+          "OverrideRate",
+          "PercentWorkComplete",
+          "EffectiveCalendarName",
+          "WorkContour",
+          "CostValidation",
+          "Timephased"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "Calendars": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "UniqueId": {
+            "type": "integer"
+          },
+          "Name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ParentUniqueId": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "ParentName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "IsBaseCalendar": {
+            "type": "boolean"
+          },
+          "IsDerived": {
+            "type": "boolean"
+          },
+          "IsProjectDefault": {
+            "type": "boolean"
+          },
+          "CalendarType": {
+            "type": "string"
+          },
+          "IsPersonal": {
+            "type": "boolean"
+          },
+          "MinutesPerDay": {
+            "type": "integer"
+          },
+          "MinutesPerWeek": {
+            "type": "integer"
+          },
+          "DaysPerMonth": {
+            "type": "integer"
+          },
+          "Days": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Day": {
+                  "type": "string"
+                },
+                "DefinedDayType": {
+                  "type": "string"
+                },
+                "DefinedPeriods": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "EffectiveWorking": {
+                  "type": "boolean"
+                },
+                "EffectivePeriods": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "Day",
+                "DefinedDayType",
+                "DefinedPeriods",
+                "EffectiveWorking",
+                "EffectivePeriods"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "WorkWeeks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "type": "string"
+                },
+                "From": {
+                  "type": "string"
+                },
+                "To": {
+                  "type": "string"
+                },
+                "Days": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Day": {
+                        "type": "string"
+                      },
+                      "DefinedDayType": {
+                        "type": "string"
+                      },
+                      "DefinedPeriods": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "EffectiveWorking": {
+                        "type": "null"
+                      },
+                      "EffectivePeriods": {
+                        "type": "array",
+                        "items": {}
+                      }
+                    },
+                    "required": [
+                      "Day",
+                      "DefinedDayType",
+                      "DefinedPeriods",
+                      "EffectiveWorking",
+                      "EffectivePeriods"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "Name",
+                "From",
+                "To",
+                "Days"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "ExceptionCount": {
+            "type": "integer"
+          },
+          "TaskUniqueIds": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "TaskNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ResourceUniqueIds": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "ResourceNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "DerivedCalendarNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "UniqueId",
+          "Name",
+          "ParentUniqueId",
+          "ParentName",
+          "IsBaseCalendar",
+          "IsDerived",
+          "IsProjectDefault",
+          "CalendarType",
+          "IsPersonal",
+          "MinutesPerDay",
+          "MinutesPerWeek",
+          "DaysPerMonth",
+          "Days",
+          "WorkWeeks",
+          "ExceptionCount",
+          "TaskUniqueIds",
+          "TaskNames",
+          "ResourceUniqueIds",
+          "ResourceNames",
+          "DerivedCalendarNames"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "CalendarExceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "CalendarUniqueId": {
+            "type": "integer"
+          },
+          "CalendarName": {
+            "type": "string"
+          },
+          "Name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "FromDate": {
+            "type": "string"
+          },
+          "ToDate": {
+            "type": "string"
+          },
+          "Working": {
+            "type": "boolean"
+          },
+          "Periods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "IsRecurring": {
+            "type": "boolean"
+          },
+          "RecurrenceType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Frequency": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "Occurrences": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "UseEndDate": {
+            "type": "boolean"
+          },
+          "RecurrenceStart": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "RecurrenceFinish": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Relative": {
+            "type": "boolean"
+          },
+          "DayOfWeek": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "DayNumber": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "MonthNumber": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "WeeklyDays": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "RecurrenceDescription": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ExpandedOccurrenceCount": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "CalendarUniqueId",
+          "CalendarName",
+          "Name",
+          "FromDate",
+          "ToDate",
+          "Working",
+          "Periods",
+          "IsRecurring",
+          "RecurrenceType",
+          "Frequency",
+          "Occurrences",
+          "UseEndDate",
+          "RecurrenceStart",
+          "RecurrenceFinish",
+          "Relative",
+          "DayOfWeek",
+          "DayNumber",
+          "MonthNumber",
+          "WeeklyDays",
+          "RecurrenceDescription",
+          "ExpandedOccurrenceCount"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "CustomFieldCatalog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "EntityType": {
+            "type": "string"
+          },
+          "FieldType": {
+            "type": "string"
+          },
+          "InternalName": {
+            "type": "string"
+          },
+          "Family": {
+            "type": "string"
+          },
+          "Alias": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "EntityType",
+          "FieldType",
+          "InternalName",
+          "Family",
+          "Alias",
+          "Status"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "CustomFieldDefinitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "EntityType": {
+            "type": "string"
+          },
+          "FieldType": {
+            "type": "string"
+          },
+          "InternalName": {
+            "type": "string"
+          },
+          "Family": {
+            "type": "string"
+          },
+          "Alias": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "AliasSources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ViewTableTitles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "DataType": {
+            "type": "string"
+          },
+          "CustomFieldUniqueId": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "LookupTableGuid": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "HasLookupTable": {
+            "type": "boolean"
+          },
+          "LookupTable": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "UniqueId": {
+                  "type": "integer"
+                },
+                "ParentUniqueId": {
+                  "type": "integer"
+                },
+                "Value": {
+                  "type": "string"
+                },
+                "Description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "UniqueId",
+                "ParentUniqueId",
+                "Value",
+                "Description"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "IsEnterpriseCustomField": {
+            "type": "boolean"
+          },
+          "Formula": {
+            "type": "null"
+          },
+          "FormulaExposedByMpxj": {
+            "type": "boolean"
+          },
+          "IsCalculated": {
+            "type": "null"
+          },
+          "HasGraphicalIndicator": {
+            "type": "boolean"
+          },
+          "Masks": {
+            "type": "array",
+            "items": {}
+          },
+          "HasCustomFieldDefinition": {
+            "type": "boolean"
+          },
+          "IsPopulated": {
+            "type": "boolean"
+          },
+          "EntitiesWithValue": {
+            "type": "integer"
+          },
+          "EntitiesWithNonZeroValue": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "EntityType",
+          "FieldType",
+          "InternalName",
+          "Family",
+          "Alias",
+          "AliasSources",
+          "ViewTableTitles",
+          "DataType",
+          "CustomFieldUniqueId",
+          "LookupTableGuid",
+          "HasLookupTable",
+          "LookupTable",
+          "IsEnterpriseCustomField",
+          "Formula",
+          "FormulaExposedByMpxj",
+          "IsCalculated",
+          "HasGraphicalIndicator",
+          "Masks",
+          "HasCustomFieldDefinition",
+          "IsPopulated",
+          "EntitiesWithValue",
+          "EntitiesWithNonZeroValue"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "CustomFieldValues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "EntityType": {
+            "type": "string"
+          },
+          "EntityId": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "EntityUniqueId": {
+            "type": "integer"
+          },
+          "EntityName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "FieldType": {
+            "type": "string"
+          },
+          "InternalName": {
+            "type": "string"
+          },
+          "Alias": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "DataType": {
+            "type": "string"
+          },
+          "DotNetType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Value": {
+            "type": [
+              "null",
+              "string",
+              "number"
+            ]
+          },
+          "FormattedValue": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ValueState": {
+            "type": "string"
+          },
+          "IsEnterpriseCustomField": {
+            "type": "boolean"
+          },
+          "Formula": {
+            "type": "null"
+          },
+          "LookupTable": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "EntityType",
+          "EntityId",
+          "EntityUniqueId",
+          "EntityName",
+          "FieldType",
+          "InternalName",
+          "Alias",
+          "DataType",
+          "DotNetType",
+          "Value",
+          "FormattedValue",
+          "ValueState",
+          "IsEnterpriseCustomField",
+          "Formula",
+          "LookupTable"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "DynamicFields": {
+      "type": "object",
+      "properties": {
+        "Enabled": {
+          "type": "boolean"
+        },
+        "Note": {
+          "type": "string"
+        },
+        "FieldTypesTested": {
+          "type": "integer"
+        },
+        "ReadsAttempted": {
+          "type": "integer"
+        },
+        "NonNullValues": {
+          "type": "integer"
+        },
+        "ReadErrors": {
+          "type": "integer"
+        },
+        "SkippedFieldTypes": {
+          "type": "array",
+          "items": {}
+        },
+        "FieldTypesWithErrors": {
+          "type": "array",
+          "items": {}
+        },
+        "NonNullValuesByEntity": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "ValuesIncludedInJson": {
+          "type": "boolean"
+        },
+        "FieldStatistics": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "Enabled",
+        "Note",
+        "FieldTypesTested",
+        "ReadsAttempted",
+        "NonNullValues",
+        "ReadErrors",
+        "SkippedFieldTypes",
+        "FieldTypesWithErrors",
+        "NonNullValuesByEntity",
+        "ValuesIncludedInJson",
+        "FieldStatistics"
+      ],
+      "additionalProperties": false
+    },
+    "DynamicFieldValues": {
+      "type": "array",
+      "items": {}
+    },
+    "Summary": {
+      "type": "object",
+      "properties": {
+        "Tasks": {
+          "type": "integer"
+        },
+        "ProjectSummaryTaskPresent": {
+          "type": "boolean"
+        },
+        "SummaryTasks": {
+          "type": "integer"
+        },
+        "Milestones": {
+          "type": "integer"
+        },
+        "InactiveTasks": {
+          "type": "integer"
+        },
+        "Dependencies": {
+          "type": "integer"
+        },
+        "Resources": {
+          "type": "integer"
+        },
+        "WorkResources": {
+          "type": "integer"
+        },
+        "MaterialResources": {
+          "type": "integer"
+        },
+        "CostResources": {
+          "type": "integer"
+        },
+        "ResourceAssignments": {
+          "type": "integer"
+        },
+        "ResourceRateEntries": {
+          "type": "integer"
+        },
+        "Calendars": {
+          "type": "integer"
+        },
+        "CalendarExceptions": {
+          "type": "integer"
+        },
+        "CustomFieldDefinitions": {
+          "type": "integer"
+        },
+        "CustomFieldValues": {
+          "type": "integer"
+        },
+        "CustomFieldValuesNonEmpty": {
+          "type": "integer"
+        },
+        "DynamicFieldValues": {
+          "type": "integer"
+        },
+        "TasksWithCost": {
+          "type": "integer"
+        },
+        "TasksWithActualCost": {
+          "type": "integer"
+        },
+        "TasksWithBaseline6Cost": {
+          "type": "integer"
+        },
+        "TotalTaskCostAllTasks": {
+          "type": "number"
+        },
+        "TotalTaskCostNonSummaryTasks": {
+          "type": "number"
+        },
+        "TotalTaskActualCostAllTasks": {
+          "type": "number"
+        },
+        "TotalTaskActualCostNonSummaryTasks": {
+          "type": "number"
+        },
+        "TotalTaskRemainingCostAllTasks": {
+          "type": "number"
+        },
+        "TotalTaskRemainingCostNonSummaryTasks": {
+          "type": "number"
+        },
+        "TotalTaskBaseline6CostAllTasks": {
+          "type": "number"
+        },
+        "TotalTaskBaseline6CostNonSummaryTasks": {
+          "type": "number"
+        },
+        "ProjectSummaryTaskCost": {
+          "type": "number"
+        },
+        "ProjectSummaryTaskBaseline6Cost": {
+          "type": "number"
+        },
+        "TotalsNote": {
+          "type": "string"
+        },
+        "Warnings": {
+          "type": "integer"
+        },
+        "Errors": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Tasks",
+        "ProjectSummaryTaskPresent",
+        "SummaryTasks",
+        "Milestones",
+        "InactiveTasks",
+        "Dependencies",
+        "Resources",
+        "WorkResources",
+        "MaterialResources",
+        "CostResources",
+        "ResourceAssignments",
+        "ResourceRateEntries",
+        "Calendars",
+        "CalendarExceptions",
+        "CustomFieldDefinitions",
+        "CustomFieldValues",
+        "CustomFieldValuesNonEmpty",
+        "DynamicFieldValues",
+        "TasksWithCost",
+        "TasksWithActualCost",
+        "TasksWithBaseline6Cost",
+        "TotalTaskCostAllTasks",
+        "TotalTaskCostNonSummaryTasks",
+        "TotalTaskActualCostAllTasks",
+        "TotalTaskActualCostNonSummaryTasks",
+        "TotalTaskRemainingCostAllTasks",
+        "TotalTaskRemainingCostNonSummaryTasks",
+        "TotalTaskBaseline6CostAllTasks",
+        "TotalTaskBaseline6CostNonSummaryTasks",
+        "ProjectSummaryTaskCost",
+        "ProjectSummaryTaskBaseline6Cost",
+        "TotalsNote",
+        "Warnings",
+        "Errors"
+      ],
+      "additionalProperties": false
+    },
+    "MigrationReadiness": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Item": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "Reason": {
+            "type": "string"
+          },
+          "Count": {
+            "type": "integer"
+          },
+          "Observation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Item",
+          "Status",
+          "Reason",
+          "Count",
+          "Observation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "Warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Errors": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "SourceFile",
+    "GeneratedAtUtc",
+    "MpxjNetVersion",
+    "ReaderUsed",
+    "Project",
+    "Tasks",
+    "VisibleColumns",
+    "ViewTables",
+    "Dependencies",
+    "Resources",
+    "ResourceRateTables",
+    "ResourceAssignments",
+    "Calendars",
+    "CalendarExceptions",
+    "CustomFieldCatalog",
+    "CustomFieldDefinitions",
+    "CustomFieldValues",
+    "DynamicFields",
+    "DynamicFieldValues",
+    "Summary",
+    "MigrationReadiness",
+    "Warnings",
+    "Errors"
+  ],
+  "additionalProperties": false
+}

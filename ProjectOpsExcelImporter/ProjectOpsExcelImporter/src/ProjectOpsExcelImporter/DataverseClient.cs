@@ -151,6 +151,49 @@ private readonly AppSettings _settings;
         return await SendJsonAsync(request, cancellationToken).ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// POST con cuerpo ya serializado que devuelve el código HTTP y el cuerpo completo sin lanzar excepción en errores 4xx/5xx
+    /// (para diagnóstico de acciones experimentales).
+    /// </summary>
+    public async Task<(int StatusCode, string Body)> PostRawAsync(string action, string jsonBody, CancellationToken cancellationToken)
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Post, action)
+        {
+            Content = new StringContent(jsonBody, Encoding.UTF8, "application/json")
+        };
+        var token = await _tokens.GetTokenAsync(cancellationToken).ConfigureAwait(false);
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        using var response = await _http.SendAsync(request, cancellationToken).ConfigureAwait(false);
+        LogHttp(request.Method.Method, request.RequestUri, (int)response.StatusCode, watch.ElapsedMilliseconds);
+        var body = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+        return ((int)response.StatusCode, body);
+    }
+
+    /// <summary>PATCH sobre un registro existente (If-Match: * evita que actúe como upsert/creación).</summary>
+    public async Task PatchAsync(string relativeUrl, JsonObject body, CancellationToken cancellationToken)
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Patch, relativeUrl)
+        {
+            Content = new StringContent(body.ToJsonString(JsonDefaults.Options), Encoding.UTF8, "application/json")
+        };
+        request.Headers.TryAddWithoutValidation("If-Match", "*");
+        await SendJsonAsync(request, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>GET de solo lectura que devuelve el cuerpo como texto (p. ej. $metadata en XML).</summary>
+    public async Task<string> GetRawAsync(string relativeUrl, string accept, CancellationToken cancellationToken)
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Get, relativeUrl);
+        request.Headers.Accept.Clear();
+        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(accept));
+        var token = await _tokens.GetTokenAsync(cancellationToken).ConfigureAwait(false);
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        using var response = await _http.SendAsync(request, cancellationToken).ConfigureAwait(false);
+        await EnsureSuccessAsync(response, request, cancellationToken).ConfigureAwait(false);
+        return await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+    }
+
     public async Task<JsonObject> GetAsync(string relativeUrl, CancellationToken cancellationToken)
     {
         using var request = new HttpRequestMessage(HttpMethod.Get, relativeUrl);
@@ -188,9 +231,11 @@ private readonly AppSettings _settings;
             request.Headers.Authorization =
                 new AuthenticationHeaderValue("Bearer", token);
 
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             using var response = await _http
                 .SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
+            LogHttp(request.Method.Method, request.RequestUri, (int)response.StatusCode, watch.ElapsedMilliseconds);
 
             if (response.StatusCode == HttpStatusCode.NotFound)
                 return false;
@@ -241,11 +286,27 @@ private readonly AppSettings _settings;
         throw new TimeoutException($"El registro {entitySet}({id:D}) no se confirmó antes del timeout.");
     }
 
+    /// <summary>Si no es null, cada llamada HTTP a Dataverse escribe una línea (hora, método, destino, estado y duración). Se activa con --trace true.</summary>
+    public static TextWriter? Trace { get; set; }
+
+    private static void LogHttp(string method, Uri? uri, int status, long milliseconds)
+    {
+        if (Trace is null) return;
+        var target = uri is null ? string.Empty : uri.IsAbsoluteUri ? uri.PathAndQuery : uri.ToString();
+        var marker = target.IndexOf("/api/data/", StringComparison.OrdinalIgnoreCase);
+        if (marker >= 0) target = target[(target.IndexOf('/', marker + 10) + 1)..];
+        target = Uri.UnescapeDataString(target);
+        if (target.Length > 150) target = target[..150] + "…";
+        Trace.WriteLine($"      [{DateTime.Now:HH:mm:ss.fff}] HTTP {method,-5} {target} -> {status} ({milliseconds} ms)");
+    }
+
     private async Task<JsonObject> SendJsonAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
         var token = await _tokens.GetTokenAsync(cancellationToken).ConfigureAwait(false);
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        var watch = System.Diagnostics.Stopwatch.StartNew();
         using var response = await _http.SendAsync(request, cancellationToken).ConfigureAwait(false);
+        LogHttp(request.Method.Method, request.RequestUri, (int)response.StatusCode, watch.ElapsedMilliseconds);
         await EnsureSuccessAsync(response, request, cancellationToken).ConfigureAwait(false);
         var text = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
         if (string.IsNullOrWhiteSpace(text)) return new JsonObject();

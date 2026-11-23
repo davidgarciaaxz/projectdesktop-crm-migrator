@@ -4,7 +4,7 @@ namespace ProjectOpsExcelImporter;
 
 /// <summary>
 /// Lee un proyecto desde JSON con el mismo formato que genera el comando <c>plan</c>
-/// (objeto con "project" y "tasks"). Produce el mismo <see cref="WorkbookProject"/> que el lector de Excel,
+/// (objeto con "project" y "tasks"). Produce un <see cref="WorkbookProject"/>,
 /// de modo que validación e importación son idénticas para ambos orígenes.
 /// </summary>
 public sealed class JsonProjectReader
@@ -118,8 +118,30 @@ public sealed class JsonProjectReader
         else
         {
             // Jerarquía por outlineLevel (orden del array); recalcula padres y tareas resumen.
-            ExcelProjectReader.BuildHierarchy(tasks, issues);
+            BuildHierarchy(tasks, issues);
         }
+    }
+
+    private static void BuildHierarchy(List<ProjectTaskRow> tasks, List<ValidationIssue> issues)
+    {
+        var stack = new Dictionary<int, ProjectTaskRow>();
+        var byId = tasks.ToDictionary(t => t.SourceId);
+        foreach (var task in tasks)
+        {
+            if (task.OutlineLevel < 1)
+            {
+                issues.Add(new ValidationIssue("Error", "INVALID_OUTLINE_LEVEL", $"Nivel de esquema {task.OutlineLevel} no válido.", task.ExcelRow, task.SourceId));
+                task.OutlineLevel = 1;
+            }
+            if (task.OutlineLevel > 1)
+            {
+                if (stack.TryGetValue(task.OutlineLevel - 1, out var parent)) task.ParentSourceId = parent.SourceId;
+                else issues.Add(new ValidationIssue("Error", "MISSING_PARENT", $"No se encontró tarea padre para el nivel {task.OutlineLevel}.", task.ExcelRow, task.SourceId));
+            }
+            stack[task.OutlineLevel] = task;
+            foreach (var key in stack.Keys.Where(k => k > task.OutlineLevel).ToList()) stack.Remove(key);
+        }
+        foreach (var task in tasks.Where(t => t.ParentSourceId.HasValue)) byId[task.ParentSourceId!.Value].IsSummary = true;
     }
 
     private static void NormalizeRawValues(Dictionary<string, object?> raw)

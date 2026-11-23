@@ -128,6 +128,7 @@ public sealed class AppSettings
     };
     public string? DependencyLagCustomField { get; set; }
     public string BookableResourceNavigationProperty { get; set; } = "msdyn_bookableresourceid";
+    public ProjectOpsExcelImporter.Calendars.CalendarImportSettings CalendarImport { get; set; } = new();
     public Dictionary<string, string> ProjectColumnMappings { get; set; } = new(StringComparer.OrdinalIgnoreCase);
     public Dictionary<string, string> TaskColumnMappings { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
@@ -167,6 +168,21 @@ public sealed class ResourceMapEntry
     public string? Notes { get; set; }
 }
 
+/// <summary>Identidad de un recurso Work del MPP y de sus registros en Project Operations (para reanudar sin duplicar).</summary>
+public sealed class ImportedResourceState
+{
+    public int MppResourceUniqueId { get; set; }
+    /// <summary>Guid del recurso en Project Desktop: identidad principal de origen.</summary>
+    public Guid MppResourceGuid { get; set; }
+    public string? ResourceName { get; set; }
+    public Guid? ProjectId { get; set; }
+    /// <summary>Recurso reservable genérico común (configurado) al que apunta el miembro; el importador no crea recursos reservables.</summary>
+    public Guid? GenericBookableResourceId { get; set; }
+    public Guid? ProjectTeamMemberId { get; set; }
+    public Guid? RoleId { get; set; }
+    public Guid? ResourcingUnitId { get; set; }
+}
+
 public sealed class ImportState
 {
     public Guid ProjectId { get; set; }
@@ -178,6 +194,16 @@ public sealed class ImportState
     public HashSet<Guid> CreatedAssignments { get; set; } = [];
     public HashSet<int> UpdatedProgressTasks { get; set; } = [];
     public DateTimeOffset UpdatedAt { get; set; }
+
+    // --- Fases de calendario (aditivo; los states anteriores siguen cargando) ---
+    public string? SourceJson { get; set; }
+    public string? SourceHash { get; set; }
+    public bool SchemaValidated { get; set; }
+    public ProjectOpsExcelImporter.Calendars.CalendarImportState? Calendar { get; set; }
+    public ProjectOpsExcelImporter.Calendars.ProjectImportState? Project { get; set; }
+    public List<string>? CompletedStages { get; set; }
+    /// <summary>Recursos Work del MPP importados como genéricos, por UniqueID del recurso en el MPP (aditivo; los states anteriores siguen cargando).</summary>
+    public Dictionary<int, ImportedResourceState>? Resources { get; set; }
 
     public static ImportState? Load(string path)
         => File.Exists(path) ? JsonSerializer.Deserialize<ImportState>(File.ReadAllText(path), JsonDefaults.Options) : null;

@@ -6,7 +6,9 @@ public sealed class ProjectOpsImporter
 {
     private readonly AppSettings _settings;
     private readonly DataverseClient _client;
-    private readonly Guid _idNamespace = Guid.Parse("B06E3CB9-23CD-4378-9C9A-57BA17EB3A1D");
+    /// <summary>Espacio de nombres de los GUID deterministas (tareas, dependencias, asignaciones). Compartido con la fase de tareas del import de calendarios.</summary>
+    public static readonly Guid IdNamespace = Guid.Parse("B06E3CB9-23CD-4378-9C9A-57BA17EB3A1D");
+    private readonly Guid _idNamespace = IdNamespace;
 
     public ProjectOpsImporter(AppSettings settings, DataverseClient client)
     {

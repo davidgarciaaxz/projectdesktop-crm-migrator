@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="controlName" xml:space="preserve"><value>Resource Calendar Viewer</value></data>
+  <data name="controlDescription" xml:space="preserve"><value>Resource working calendar and rule diagnostics.</value></data>
+  <data name="hostName" xml:space="preserve"><value>Host field</value></data>
+  <data name="hostDescription" xml:space="preserve"><value>Text column hosting the viewer. Its value is never changed.</value></data>
+  <data name="resourceIdName" xml:space="preserve"><value>Resource ID</value></data>
+  <data name="resourceIdDescription" xml:space="preserve"><value>Bind to bookableresourceid, the current record identifier.</value></data>
+  <data name="resource" xml:space="preserve"><value>Resource</value></data>
+  <data name="working" xml:space="preserve"><value>Working</value></data>
+  <data name="break" xml:space="preserve"><value>Break</value></data>
+  <data name="vacation" xml:space="preserve"><value>Vacation</value></data>
+  <data name="absence" xml:space="preserve"><value>Time off</value></data>
+  <data name="nonWorking" xml:space="preserve"><value>Non-working</value></data>
+  <data name="businessClosure" xml:space="preserve"><value>Holiday / closure</value></data>
+  <data name="exception" xml:space="preserve"><value>Exception</value></data>
+  <data name="unknown" xml:space="preserve"><value>Unknown rule</value></data>
+  <data name="timezone" xml:space="preserve"><value>Time zone code</value></data>
+  <data name="utcDisplay" xml:space="preserve"><value>Times shown in UTC</value></data>
+  <data name="previous" xml:space="preserve"><value>Previous period</value></data>
+  <data name="next" xml:space="preserve"><value>Next period</value></data>
+  <data name="today" xml:space="preserve"><value>Today</value></data>
+  <data name="refresh" xml:space="preserve"><value>Refresh calendar</value></data>
+  <data name="chooseDate" xml:space="preserve"><value>Choose date</value></data>
+  <data name="view" xml:space="preserve"><value>Calendar view</value></data>
+  <data name="week" xml:space="preserve"><value>Week</value></data>
+  <data name="month" xml:space="preserve"><value>Month</value></data>
+  <data name="timeline" xml:space="preserve"><value>Timeline</value></data>
+  <data name="masked" xml:space="preserve"><value>Protected field</value></data>
+  <data name="loading" xml:space="preserve"><value>Loading resource calendar</value></data>
+  <data name="saveResource" xml:space="preserve"><value>Save the resource before displaying its calendar. If it is already saved, check the Resource ID binding.</value></data>
+  <data name="loadError" xml:space="preserve"><value>The resource calendar could not be loaded. Check your connection and read permissions, then try again.</value></data>
+  <data name="expansionError" xml:space="preserve"><value>Dataverse could not expand the calendar for this period. Open the control in an online model-driven app, check calendar read permissions, then retry.</value></data>
+  <data name="retry" xml:space="preserve"><value>Retry</value></data>
+  <data name="noCalendar" xml:space="preserve"><value>This Bookable Resource has no working calendar assigned.</value></data>
+  <data name="noRules" xml:space="preserve"><value>The calendar does not contain readable rules.</value></data>
+  <data name="partialData" xml:space="preserve"><value>Some expanded time blocks have unknown categories or invalid dates. Totals include only recognised intervals. Activity blocks are not treated as time off or free capacity.</value></data>
+  <data name="partial" xml:space="preserve"><value>Partial data</value></data>
+  <data name="availability" xml:space="preserve"><value>Calendar availability</value></data>
+  <data name="availabilityFormula" xml:space="preserve"><value>Working / (working + vacation + time off). Bookings and assignments are not included; this is not free capacity or assignment utilization.</value></data>
+  <data name="notAvailable" xml:space="preserve"><value>Not available</value></data>
+  <data name="workingHours" xml:space="preserve"><value>Working hours</value></data>
+  <data name="vacationHours" xml:space="preserve"><value>Vacation hours</value></data>
+  <data name="absenceHours" xml:space="preserve"><value>Time-off hours</value></data>
+  <data name="breakHours" xml:space="preserve"><value>Break hours</value></data>
+  <data name="nonWorkingHours" xml:space="preserve"><value>Non-working hours</value></data>
+  <data name="workingDays" xml:space="preserve"><value>Working days</value></data>
+  <data name="vacationDays" xml:space="preserve"><value>Vacation days</value></data>
+  <data name="exceptions" xml:space="preserve"><value>Calendar exceptions</value></data>
+  <data name="noIntervals" xml:space="preserve"><value>Dataverse returned no valid calendar intervals for this period. Original rules remain available under Data quality.</value></data>
+  <data name="distribution" xml:space="preserve"><value>Calendar distribution</value></data>
+  <data name="dailyWorking" xml:space="preserve"><value>Working hours by day</value></data>
+  <data name="heatmap" xml:space="preserve"><value>Daily availability</value></data>
+  <data name="insights" xml:space="preserve"><value>Visible-period insights</value></data>
+  <data name="nextVacation" xml:space="preserve"><value>Next vacation in period</value></data>
+  <data name="nextAbsence" xml:space="preserve"><value>Next time off in period</value></data>
+  <data name="mostAvailable" xml:space="preserve"><value>Most available day</value></data>
+  <data name="leastAvailable" xml:space="preserve"><value>Least available day</value></data>
+  <data name="longestVacation" xml:space="preserve"><value>Longest vacation interval</value></data>
+  <data name="averageWorking" xml:space="preserve"><value>Average hours per working day</value></data>
+  <data name="exceptionDays" xml:space="preserve"><value>Days with exceptions</value></data>
+  <data name="totalHours" xml:space="preserve"><value>Visible calendar hours</value></data>
+  <data name="knownCoverage" xml:space="preserve"><value>Visible period with known rules</value></data>
+  <data name="dataQuality" xml:space="preserve"><value>Data quality</value></data>
+  <data name="unknownRules" xml:space="preserve"><value>Unknown rules</value></data>
+  <data name="invalidRules" xml:space="preserve"><value>Invalid rules</value></data>
+  <data name="nestedCalendars" xml:space="preserve"><value>Nested calendars</value></data>
+  <data name="duplicates" xml:space="preserve"><value>Discarded duplicates</value></data>
+  <data name="rule" xml:space="preserve"><value>Rule</value></data>
+  <data name="depth" xml:space="preserve"><value>Hierarchy depth</value></data>
+  <data name="details" xml:space="preserve"><value>Calendar rule details</value></data>
+  <data name="close" xml:space="preserve"><value>Close details</value></data>
+  <data name="type" xml:space="preserve"><value>Type</value></data>
+  <data name="title" xml:space="preserve"><value>Title</value></data>
+  <data name="start" xml:space="preserve"><value>Start</value></data>
+  <data name="end" xml:space="preserve"><value>End</value></data>
+  <data name="duration" xml:space="preserve"><value>Duration</value></data>
+  <data name="capacity" xml:space="preserve"><value>Rule effort</value></data>
+  <data name="pattern" xml:space="preserve"><value>Recurrence pattern</value></data>
+  <data name="minutes" xml:space="preserve"><value>minutes</value></data>
+  <data name="sourceCalendar" xml:space="preserve"><value>Source calendar ID</value></data>
+  <data name="sourceRule" xml:space="preserve"><value>Source rule ID</value></data>
+  <data name="rawValues" xml:space="preserve"><value>Raw diagnostic values</value></data>
+  <data name="warning_invalidRule" xml:space="preserve"><value>Some rule responses have invalid or missing identifiers.</value></data>
+  <data name="warning_invalidInterval" xml:space="preserve"><value>Some rules have no valid explicit interval and were excluded from totals.</value></data>
+  <data name="warning_unknownRule" xml:space="preserve"><value>Some expanded blocks have undocumented codes or represent activities. They remain unknown and are excluded from category totals.</value></data>
+  <data name="warning_recurrence" xml:space="preserve"><value>A recurrence or its time zone cannot be safely expanded locally.</value></data>
+  <data name="warning_nestedExtent" xml:space="preserve"><value>Nested rules or offsets require Dataverse calendar expansion; they were excluded from totals.</value></data>
+  <data name="warning_priority" xml:space="preserve"><value>Rule precedence is unresolved; overlapping categories must not be treated as authoritative availability.</value></data>
+  <data name="warning_cycle" xml:space="preserve"><value>A circular calendar reference was stopped.</value></data>
+  <data name="warning_depth" xml:space="preserve"><value>The calendar traversal safety limit was reached.</value></data>
+  <data name="warning_duplicate" xml:space="preserve"><value>Exact duplicate intervals were discarded.</value></data>
+  <data name="warning_truncated" xml:space="preserve"><value>The response or expansion exceeded a safety limit; data is incomplete.</value></data>
+  <data name="warning_timeZone" xml:space="preserve"><value>A calendar time zone requires verification.</value></data>
+</root>

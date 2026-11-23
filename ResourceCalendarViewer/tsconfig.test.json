@@ -1,0 +1,22 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "ES2020",
+        "rootDir": "./ResourceCalendarViewer",
+        "outDir": "./out/test-build",
+        "noEmit": false,
+        "declaration": false,
+        "sourceMap": false,
+        "types": []
+    },
+    "include": [
+        "ResourceCalendarViewer/models.ts",
+        "ResourceCalendarViewer/services/calendarAnalytics.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "out"
+    ]
+}
